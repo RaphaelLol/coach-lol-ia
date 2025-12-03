@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Coach LoL IA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0a0a0a;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background: #111;
+      padding: 20px;
+    }
+    h1 {
+      color: #ffcc00;
+    }
+    main {
+      padding: 40px;
+    }
+    .btn {
+      background: #ffcc00;
+      color: #111;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    footer {
+      background: #111;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Coach LoL IA</h1>
+    <p>Analyse tes replays League of Legends avec l’intelligence artificielle</p>
+  </header>
+
+  <main>
+    <h2>Bienvenue 👋</h2>
+    <p>Importe ton fichier <strong>.ROFL</strong> et laisse l’IA analyser ta partie.</p>
+    
+    <input type="file" id="replayInput" accept=".rofl" style="display:none">
+    <button class="btn" onclick="document.getElementById('replayInput').click()">Importer un replay</button>
+    
+    <div id="output"></div>
+  </main>
+
+  <footer>
+    <p>© 2025 Coach LoL IA — Projet GitHub Pages</p>
+  </footer>
+
+  <script>
+    const input = document.getElementById("replayInput");
+    const output = document.getElementById("output");
+
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+      if (!file) return;
+      output.innerHTML = `<p>✅ Fichier importé : <strong>${file.name}</strong></p>`;
+      // Ici tu ajouteras plus tard le parsing du .ROFL
+    });
+  </script>
+</body>
+</html>
