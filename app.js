@@ -53,14 +53,19 @@ askAiBtn.addEventListener("click", async () => {
   aiResult.textContent = "Analyse en cours...";
   try {
     // Envoie le timestamp + métadonnées basiques (tu pourras enrichir)
-    const payload = {
-      timestamp: timestampSeconds,
-      // Optionnel: ajoute des champs comme champion, lane, rôle, etc.
-      context: {
-        source: "video",
-        duration: Math.floor(videoEl.duration || 0)
-      }
-    };
+   const payload = {
+  timestamp: timestampSeconds,
+  context: {
+    role: "ADC",          // à saisir via formulaire ou input
+    champion: "Kalista",  // idem
+    gold: 3200,           // à calculer ou saisir
+    cs: 58,
+    kills: 1,
+    deaths: 2,
+    items: ["Doran's Blade", "Boots", "Pickaxe"]
+  }
+};
+
     const res = await fetch(`${BACKEND_URL}/analyze`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
