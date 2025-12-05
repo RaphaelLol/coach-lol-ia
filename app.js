@@ -8,10 +8,10 @@ input.addEventListener("change", async () => {
   const formData = new FormData();
   formData.append("file", file);
 
-  const response = await fetch("https://coach-lol-backend.onrender.com/upload", {
-    method: "POST",
-    body: formData
-  });
+ const response = await fetch("https://coach-lol-backend.onrender.com/upload", {
+  method: "POST",
+  body: formData
+});
 
   const data = await response.json();
   output.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
