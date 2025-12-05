@@ -32,3 +32,8 @@ footer {
   margin-top: 40px;
 }
 
+body { font-family: system-ui, sans-serif; margin: 24px; }
+#player { margin-top: 12px; }
+#controls { margin-top: 12px; display: flex; gap: 8px; align-items: center; }
+#ai-panel { margin-top: 16px; }
+#ai-result { margin-top: 8px; padding: 8px; background: #f4f4f4; border-radius: 6px; }
