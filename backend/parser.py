@@ -1,5 +1,6 @@
+import zipfile
+import json
 from flask import Flask, request, jsonify
-import rofl_parser  # librairie qui lit directement les fichiers .ROFL
 
 app = Flask(__name__)
 
@@ -7,10 +8,11 @@ app = Flask(__name__)
 def upload_replay():
     file = request.files["file"]
 
-    # Parse le fichier ROFL
-    replay_data = rofl_parser.parse(file)
+    # Ouvrir le fichier ROFL comme un zip
+    with zipfile.ZipFile(file) as z:
+        with z.open("replay.json") as replay_file:
+            replay_data = json.load(replay_file)
 
-    # Retourne le JSON directement
     return jsonify(replay_data)
 
 if __name__ == "__main__":
