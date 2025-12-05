@@ -8,8 +8,7 @@ input.addEventListener("change", async () => {
   const formData = new FormData();
   formData.append("file", file);
 
-  // Envoi du fichier au backend Flask
-  const response = await fetch("http://localhost:5000/upload", {
+  const response = await fetch("https://coach-lol-backend.onrender.com/upload", {
     method: "POST",
     body: formData
   });
