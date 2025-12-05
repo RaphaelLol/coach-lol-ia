@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Coach LoL IA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Lien vers ton CSS -->
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Coach LoL IA — Analyse vidéo</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1>Coach LoL IA</h1>
-    <p>Analyse tes replays League of Legends avec l’intelligence artificielle</p>
-  </header>
+  <h1>Coach LoL IA — Import vidéo</h1>
 
-  <main>
-    <h2>Bienvenue 👋</h2>
-    <p>Importe ton fichier <strong>.ROFL</strong> et laisse l’IA analyser ta partie.</p>
-    
-    <input type="file" id="replayInput" accept=".rofl" style="display:none">
-    <button class="btn" onclick="document.getElementById('replayInput').click()">Importer un replay</button>
-    
-    <div id="output"></div>
-  </main>
+  <!-- Import MP4 -->
+  <input id="video-input" type="file" accept="video/mp4" />
+  <button id="load-video">Charger la vidéo</button>
 
-  <footer>
-    <p>© 2025 Coach LoL IA — Projet GitHub Pages</p>
-  </footer>
+  <!-- Lecteur vidéo -->
+  <div id="player">
+    <video id="replay" controls width="960"></video>
+  </div>
 
-  <!-- Lien vers ton JS -->
-  <script src="app.js" defer></script>
+  <!-- Contrôles de timeline -->
+  <div id="controls">
+    <button id="back-10">-10s</button>
+    <button id="forward-10">+10s</button>
+    <span id="time-readout">00:00</span>
+  </div>
+
+  <!-- Demande de conseil IA -->
+  <div id="ai-panel">
+    <button id="ask-ai">Demander conseil IA au moment actuel</button>
+    <div id="ai-result"></div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
