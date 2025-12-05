@@ -1,29 +1,17 @@
 from flask import Flask, request, jsonify
-from datanashor.parser import ReplayParser
+import rofl_parser  # librairie qui lit directement les fichiers .ROFL
 
 app = Flask(__name__)
 
 @app.route("/upload", methods=["POST"])
 def upload_replay():
-    file = request.files["file"]  # fichier envoyé par le frontend
-    parser = ReplayParser()
-    replay = parser.parse(file)
+    file = request.files["file"]
 
-    data = {
-        "gameLength": replay.get("gameLength"),
-        "gameMode": replay.get("gameMode"),
-        "mapId": replay.get("mapId"),
-        "players": [
-            {
-                "summonerName": p.get("summonerName"),
-                "championName": p.get("championName"),
-                "lane": p.get("lane")
-            }
-            for p in replay.get("players", [])
-        ],
-        "events": replay.get("events", [])
-    }
-    return jsonify(data)
+    # Parse le fichier ROFL
+    replay_data = rofl_parser.parse(file)
+
+    # Retourne le JSON directement
+    return jsonify(replay_data)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
